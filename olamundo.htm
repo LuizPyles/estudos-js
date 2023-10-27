@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="button" value="Apresentar" onclick="apresentar()">
+    <input type="button" value="gritar" onmouseover="gritar()">
+
+    <script>
+
+        function apresentar() {
+            var nome = prompt("Digite seu nome: ");
+            var idade = prompt("Digite sua idade: ");
+            document.write("<h1>Bem vindo ao meu site " + nome + " que legal ter " + idade + " anos" + "</h1>");
+
+        }
+
+        function gritar() {
+            alert("UAAAAAAAAAAAAAAAAAAAAAHAHAHAHAHAH");
+        }
+
+    </script>
+
+
+</body>
+
+</html>
