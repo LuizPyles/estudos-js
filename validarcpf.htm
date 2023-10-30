@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de CPF</title>
+</head>
+
+<body>
+    <p>
+        <label for="cpf">CPF: </label>
+        <input type="text" id="cpf" name="cpf">
+    </p>
+
+    <p>
+        <input type="button" value="Validar" onclick="validarcpf()">
+    </p>
+
+    <hr>
+
+    <p>
+        Resultado: <span id="resultado"></span>
+    </p>
+
+
+
+
+    <script>
+        function validarcpf() {
+        if (cpf.value.length == 11) {
+            resultado.innerHTML = "Show!"
+            resultado.style.color = "green"
+            cpf.style.backgroundColor = "green"
+        } else {
+            resultado.innerHTML = "DesShow!"
+            resultado.style.color = "red"
+            cpf.style.backgroundColor = "red"
+        }
+        }
+
+    </script>
+
+
+</body>
+
+</html>
