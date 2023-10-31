@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <title>Calculadora de Notas</title>
+    <title>Calculadora IMC</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,10 +13,11 @@
 </head>
 
 <body>
+    <!-- Insira o código JS onde for necessário, dentro da tag específica: -->
     <div class="container-fluid">
         <nav class="navbar navbar-expand navbar-light bg-light">
             <div class="navbar-brand">
-                Calculadora de Notas
+                Calculadora IMC
             </div>
         </nav>
     </div>
@@ -25,54 +26,62 @@
             <div class="col-md-6 col-sm-12 d-flex justify-content-center w-50">
                 <form>
                     <div class="form-group">
-                        <label for="n1">Nota 1:</label>
-                        <input type="number" class="form-control" id="n1" aria-describedby="n1" placeholder="Nota 1">
+                        <label for="altura">Altura:</label>
+                        <input type="number" class="form-control" id="altura" aria-describedby="altura"
+                            placeholder="Sua altura" onkeyup="corrigir()">
+                        <small class="form-text text-muted">Informe sua altura, ex: 1,86</small>
                     </div>
                     <div class="form-group">
-                        <label for="n2">Nota 2:</label>
-                        <input type="number" class="form-control" id="n2" aria-describedby="n2" placeholder="Nota 2">
-                    </div>
-                    <div class="form-group">
-                        <label for="n3">Nota 3:</label>
-                        <input type="number" class="form-control" id="n3" aria-describedby="n3" placeholder="Nota 3">
-                    </div>
-                    <div class="form-group">
-                        <label for="n4">Nota 4:</label>
-                        <input type="number" class="form-control" id="n4" aria-describedby="n4" placeholder="Nota 4">
+                        <label for="peso">Peso:</label>
+                        <input type="number" class="form-control" id="peso" aria-describedby="peso"
+                            placeholder="Seu peso">
+                        <small class="form-text text-muted">Informe eu peso, ex: 72,5</small>
                     </div>
                     <!-- Utilize o evento DOM adequado para invocar a função js corretamente: -->
-                    <button type="button" class="btn btn-primary btn-block" onclick="media()">Calcular</button>
+                    <button type="button" class="btn btn-primary btn-block" onclick="calcular()">Calcular</button>
                 </form>
 
             </div>
             <div class="col-md-6 col-sm-12 mt-4">
                 <h2 class="text-center">Resultado:</h2>
                 <!-- O resultado deve ser exibido dentros dos "spans" abaixo: -->
-                <p>Sua média é <span id="resultMedia"></span><br>
-                    Você foi <span id="resultado"></span></p>
+                <p>Seu IMC é: <span id="resultIMC"></span><br>
+                    Sua classificação é: <span id="resultClassific"></span></p>
             </div>
         </div>
     </div>
 
     <script>
-        function media() {
-            var nota1 = parseFloat(n1.value);
-            var nota2 = parseFloat(n2.value);
-            var nota3 = parseFloat(n3.value);
-            var nota4 = parseFloat(n4.value);
+        function calcular() {
+            var peso1 = parseFloat(peso.value);
+            var altura1 = parseFloat(altura.value);
 
-            var media = (nota1 + nota2 + nota3 + nota4) / 4;
-            resultMedia.innerHTML = media.toFixed(2);
-            if(media >= 5) {
-                resultado.innerHTML = "Aprovado!";
-                resultado.style.color = "green";
-            }else{
-                resultado.innerHTML = "Reprovado!";
-                resultado.style.color = "red";
+            var imc = peso1 / (altura1 * altura1);
+            resultIMC.innerHTML = imc.toFixed(2);
+
+            if (imc < 1) {
+                alert("Entre com as medidas corretas");
+            } else if (imc <= 18.5) {
+                resultClassific.innerHTML = "Baixo peso";
+                resultClassific.style.color = "rgb(131,198,53)";
+            } else if (imc <= 24.99) {
+                resultClassific.innerHTML = "Normal";
+                resultClassific.style.color = "rgb(192,217,11)";
+            } else if (imc <= 29.99) {
+                resultClassific.innerHTML = "Sobrepeso";
+                resultClassific.style.color = "rgb(252,165,0)";
+            } else {
+                resultClassific.innerHTML = "Obesidade";
+                resultClassific.style.color = "rgb(246,118,1)";
             }
         }
 
     </script>
+
+
+
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
